@@ -1,10 +1,25 @@
-let board = document.querySelector('.board')
-for(let i = 0; i<=9; i++){
+const grid =[
+    ['','',''],
+    ['','',''],
+    ['','','']
+]
 
-    let newDiv = document.createElement('div');
-    
-    newDiv.setAttribute('class','cell');
-    newDiv.innerHTML = "This is the content of the new div."
-    
-    board.appendChild(newDiv);
+const board = document.querySelector('.board');
+
+let player = 'X';
+
+let b_row = 3;
+let b_column = 3;
+
+for(let i = 0; i < b_row; i++){
+    const row = document.createElement('div');
+    row.classList.add('row');
+    for(let j = 0; j < b_column; j++){
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.setAttribute('data-row' , i);
+        cell.setAttribute('data-cell', j);
+        row.appendChild(cell);
+    }
+    board.appendChild(row);
 }
