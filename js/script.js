@@ -1,17 +1,21 @@
 export class Board {
 
-    main() {
+    constructor(main) {
 
-        const grid = [
+        this.grid = [
             ['', '', ''],
             ['', '', ''],
             ['', '', '']
         ]
 
-        const board = document.querySelector('.board');
+        this.board = document.querySelector('.board');
 
-        let player = 'X';
+        this.player = 'X';
+        this.handleClick = this.handleClick.bind(this);
+    }
 
+
+    bmain() {
         let b_row = 3;
         let b_column = 3;
 
@@ -26,16 +30,23 @@ export class Board {
                 cell.addEventListener('click', this.handleClick);
                 row.appendChild(cell);
             }
-            board.appendChild(row);
+            this.board.appendChild(row);
+
         }
+
+
     }
 
-    handleClick(){
-        const row = this.main.getAttribute('data-row');
-        const col = this.main.getAttribute('data-cell');
+    handleClick(event) {
+        const row = event.target.getAttribute('data-row');
+        const col = event.target.getAttribute('data-cell');
+        if (this.grid[row][col] === '') {
+            this.grid[row][col] = this.player;
+            event.target.innerHTML = this.player;
+            event.target.classList.add(this.player);
+        }
     }
 
 }
 
-/*const myCar = new board()
-myCar.main()*/
+
