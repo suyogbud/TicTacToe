@@ -1,17 +1,10 @@
+import { Click } from "./check.js";
 export class Board {
 
     constructor(main) {
-
-        this.grid = [
-            ['', '', ''],
-            ['', '', ''],
-            ['', '', '']
-        ]
-
         this.board = document.querySelector('.board');
-
-        this.player = 'X';
-        this.handleClick = this.handleClick.bind(this);
+        this.clickfnc = new Click();
+        this.click = this.clickfnc.clickhandle;
     }
 
 
@@ -27,23 +20,11 @@ export class Board {
                 cell.classList.add('cell');
                 cell.setAttribute('data-row', i);
                 cell.setAttribute('data-cell', j);
-                cell.addEventListener('click', this.handleClick);
+                cell.addEventListener('click', this.click);
                 row.appendChild(cell);
             }
             this.board.appendChild(row);
 
-        }
-
-
-    }
-
-    handleClick(event) {
-        const row = event.target.getAttribute('data-row');
-        const col = event.target.getAttribute('data-cell');
-        if (this.grid[row][col] === '') {
-            this.grid[row][col] = this.player;
-            event.target.innerHTML = this.player;
-            event.target.classList.add(this.player);
         }
     }
 
