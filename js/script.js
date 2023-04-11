@@ -1,4 +1,5 @@
 import { Click } from "./check.js";
+import { reload } from "./reload.js";
 export class Board {
 
     constructor(main) {
@@ -25,8 +26,10 @@ export class Board {
             }
             this.board.appendChild(row);
         }
-    }
+        let reset = new reload();
+        reset.reloadpage();
 
+    }
 }
 
 
