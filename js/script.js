@@ -24,7 +24,6 @@ export class Board {
                 row.appendChild(cell);
             }
             this.board.appendChild(row);
-
         }
     }
 
